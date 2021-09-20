@@ -9,7 +9,6 @@
     <RepositoryUrl>https://github.com/kamacharovs/kamafi-core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>..\LICENSE</PackageLicenseFile>
     <Authors>gkama</Authors>
     <Product>Kamacharov Finance</Product>
   </PropertyGroup>
@@ -19,6 +18,18 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\kamafi.core.data\kamafi.core.data.csproj" />
+    <ProjectReference Include="..\kamafi.core.middleware\kamafi.core.middleware.csproj" />
   </ItemGroup>
 
 </Project>
