@@ -5,13 +5,14 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kamafi.core", "kamafi.core\kamafi.core.csproj", "{AE6F5652-1591-4BC8-9FB0-837FAF23AAC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kamafi.core.middleware", "kamafi.core.middleware\kamafi.core.middleware.csproj", "{77D8E308-B1AE-4567-8477-0747E8E2B9EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kamafi.core.middleware", "kamafi.core.middleware\kamafi.core.middleware.csproj", "{77D8E308-B1AE-4567-8477-0747E8E2B9EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kamafi.core.data", "kamafi.core.data\kamafi.core.data.csproj", "{1437266E-3B81-41E9-BDFB-AEE971EA64B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kamafi.core.data", "kamafi.core.data\kamafi.core.data.csproj", "{1437266E-3B81-41E9-BDFB-AEE971EA64B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5DF411F2-5C10-4CB7-9F7B-BB90D2B4AF39}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\publish.yml = .github\workflows\publish.yml
+		.github\workflows\data.yml = .github\workflows\data.yml
+		middleware.yml = middleware.yml
 	EndProjectSection
 EndProject
 Global
