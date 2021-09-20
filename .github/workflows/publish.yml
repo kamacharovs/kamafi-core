@@ -2,6 +2,8 @@ name: publish
 
 env:
   configuration: Release
+  dotnet_version: 5.0.x
+  source_url: https://nuget.pkg.github.com/kamacharovs/index.json
   project_data: kamafi.core.data
   project_middleware: kamafi.core.middleware
 
@@ -19,8 +21,8 @@ jobs:
     - name: setup
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
-        source-url: https://nuget.pkg.github.com/kamacharovs/index.json
+        dotnet-version: ${{ end.dotnet_version }}
+        source-url: ${{ env.source_url }}
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
@@ -45,8 +47,8 @@ jobs:
     - name: setup
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
-        source-url: https://nuget.pkg.github.com/kamacharovs/index.json
+        dotnet-version: ${{ end.dotnet_version }}
+        source-url: ${{ env.source_url }}
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
