@@ -2,7 +2,7 @@
 
 Kamacharov Finance core library
 
-[![publish data packages](https://github.com/kamacharovs/kamafi-core/actions/workflows/build.yml/badge.svg)](https://github.com/kamacharovs/kamafi-core/actions/workflows/build.yml)
+[![publish](https://github.com/kamacharovs/kamafi-core/actions/workflows/publish.yml/badge.svg)](https://github.com/kamacharovs/kamafi-core/actions/workflows/publish.yml)
 
 ## How it works
 
