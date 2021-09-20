@@ -1,9 +1,8 @@
-name: publish packages
+name: publish data package
 
 env:
   configuration: Release
-  project_data: kamafi.core.data
-  project_middleware: kamafi.core.middleware
+  project: kamafi.core.data
   output_path: app/publish
 
 on:
@@ -22,18 +21,12 @@ jobs:
       with:
         dotnet-version: 5.0.x
 
-    - name: build solution
+    - name: build
       run: dotnet build -c ${{ env.configuration }}
           
-    - name: generate packages
+    - name: generate
       run: |
-        cd ${{ env.project_data }}
+        cd ${{ env.project }}
         dotnet pack -c ${{ env.configuration }} -o out
-        cd ..
-        cd ${{ env.project_middleware }}
-        dotnet pack -c ${{ env.configuration }} -o out
-
     - name: push
-      run: |
-        dotnet nuget push -s ./${{ env.project_data }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
-        dotnet nuget push -s ./${{ env.project_middleware }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+      run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
