@@ -27,10 +27,10 @@ jobs:
     - name: build
       run: dotnet build -c ${{ env.configuration }}
           
-    - name: build and generate
+    - name: generate
       run: |
         cd ${{ env.project }}
         dotnet pack -c ${{ env.configuration }} -o out
 
     - name: push
-      run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate --no-symbols true
+      run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
