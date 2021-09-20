@@ -35,5 +35,5 @@ jobs:
 
     - name: push
       run: |
-        dotnet nuget push ./${{ env.project_data }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
-        dotnet nuget push ./${{ env.project_middleware }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+        dotnet nuget push -s ./${{ env.project_data }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+        dotnet nuget push -s ./${{ env.project_middleware }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
