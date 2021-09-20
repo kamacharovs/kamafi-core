@@ -1,0 +1,63 @@
+name: publish
+
+env:
+  configuration: Release
+  project_data: kamafi.core.data
+  project_middleware: kamafi.core.middleware
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  publish-data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        source-url: https://nuget.pkg.github.com/kamacharovs/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+    - name: build
+      run: dotnet build -c ${{ env.configuration }}
+          
+    - name: generate
+      run: |
+        cd ${{ env.project_data }}
+        dotnet pack -c ${{ env.configuration }} -o out
+
+    - name: push
+      run: |
+        dotnet nuget push ./${{ env.project_data }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+
+  publish-middleware:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+        source-url: https://nuget.pkg.github.com/kamacharovs/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+    - name: build
+      run: dotnet build -c ${{ env.configuration }}
+          
+    - name: generate
+      run: |
+        cd ${{ env.project_middleware }}
+        dotnet pack -c ${{ env.configuration }} -o out
+
+    - name: push
+      run: |
+        dotnet nuget push ./${{ env.project_middleware }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}

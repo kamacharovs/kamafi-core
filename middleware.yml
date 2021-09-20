@@ -9,28 +9,4 @@ on:
     branches: [ main ]
 
 jobs:
-  publish-middleware:
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout
-      uses: actions/checkout@v2
-
-    - name: setup
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-        source-url: https://nuget.pkg.github.com/kamacharovs/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-
-    - name: build
-      run: dotnet build -c ${{ env.configuration }}
-          
-    - name: generate
-      run: |
-        cd ${{ env.project }}
-        dotnet pack -c ${{ env.configuration }} -o out
-
-    - name: push
-      run: |
-        dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+  
