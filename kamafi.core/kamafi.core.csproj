@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Company>Kamacharov Finance</Company>
+    <Description>Kamacharov Finance core library</Description>
+    <PackageProjectUrl>https://github.com/kamacharovs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kamacharovs/kamafi-core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>..\LICENSE</PackageLicenseFile>
+    <Authors>gkama</Authors>
+    <Product>Kamacharov Finance</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
