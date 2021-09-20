@@ -7,10 +7,10 @@
     <Version>1.0.0</Version>
     <Authors>gkama</Authors>
     <Company>Kamacharov Finance</Company>
-    <Product>Kamacharov Finance core data library</Product>
-    <Description>Kamacharov Finance core data library</Description>
+    <Product>Kamacharov Finance core data package</Product>
+    <Description>Kamacharov Finance core data package</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <NeutralLanguage>en-US</NeutralLanguage>
+    <NeutralLanguage>en</NeutralLanguage>
     <RepositoryUrl>https://github.com/kamacharovs/kamafi-core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/kamacharovs/kamafi-core</PackageProjectUrl>
