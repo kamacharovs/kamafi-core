@@ -1,4 +1,4 @@
-name: publish data package
+name: publish middleware package
 
 env:
   configuration: Release
