@@ -1,7 +1,7 @@
 name: publish package
 
 env:
-  configuration: release
+  configuration: Release
   project: kamafi.core.data
   output_path: app/publish
 
