@@ -8,7 +8,7 @@ env:
   project_middleware: kamafi.core.middleware
 
 on:
-  pull_request:
+  push:
     branches: [ main ]
 
 jobs:
