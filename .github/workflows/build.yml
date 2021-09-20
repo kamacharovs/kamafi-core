@@ -1,8 +1,9 @@
-name: publish package
+name: publish packages
 
 env:
   configuration: Release
-  project: kamafi.core.data
+  project_data: kamafi.core.data
+  project_middleware: kamafi.core.middleware
   output_path: app/publish
 
 on:
@@ -20,17 +21,19 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-        source-url: https://nuget.pkg.github.com/kamacharovs/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
-    - name: build
+    - name: build solution
       run: dotnet build -c ${{ env.configuration }}
           
-    - name: generate
+    - name: generate packages
       run: |
-        cd ${{ env.project }}
+        cd ${{ env.project_data }}
+        dotnet pack -c ${{ env.configuration }} -o out
+        cd ..
+        cd ${{ env.project_middleware }}
         dotnet pack -c ${{ env.configuration }} -o out
 
     - name: push
-      run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+      run: |
+        dotnet nuget push ./${{ env.project_data }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+        dotnet nuget push ./${{ env.project_middleware }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
