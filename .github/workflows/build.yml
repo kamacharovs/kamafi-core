@@ -2,7 +2,7 @@ name: publish package
 
 env:
   configuration: release
-  project: kamafi.core
+  project: kamafi.core.data
   output_path: app/publish
 
 on:
@@ -22,12 +22,12 @@ jobs:
         dotnet-version: 5.0.x
         source-url: https://nuget.pkg.github.com/kamacharovs/index.json
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.PACKAGE_TOKEN}}        
+        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}        
           
     - name: build and generate
       run: |  
-        cd ${{env.project}}
-        dotnet pack -c Release -o out  
+        cd ${{ env.project }}
+        dotnet pack -c ${{ env.configuration }} -o out  
 
     - name: push
-      run: dotnet nuget push ./${{env.project}}/out/*.nupkg --skip-duplicate --no-symbols true
+      run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate --no-symbols true
