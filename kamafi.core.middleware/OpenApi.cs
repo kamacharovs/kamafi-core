@@ -11,6 +11,7 @@ namespace kamafi.core.middleware
 {
     public static partial class MiddlewareExtensions
     {
+        //TODO add overloaded method to accept IConfiguration
         public static IServiceCollection AddKamafiSwaggerGen(
             this IServiceCollection services,
             OpenApiGeneral general,

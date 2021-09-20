@@ -10,6 +10,7 @@ namespace kamafi.core.middleware
 {
     public static partial class MiddlewareExtensions
     {
+        //TODO add overloaded method to accept IConfiguration
         public static IServiceCollection AddKamafiAuthentication(
             this IServiceCollection services,
             string publicKey,
