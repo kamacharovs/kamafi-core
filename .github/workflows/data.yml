@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
@@ -28,5 +28,6 @@ jobs:
       run: |
         cd ${{ env.project }}
         dotnet pack -c ${{ env.configuration }} -o out
+
     - name: push
       run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}

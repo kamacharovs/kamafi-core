@@ -1,0 +1,33 @@
+name: publish middleware package
+
+env:
+  configuration: Release
+  project: kamafi.core.middleware
+  output_path: app/publish
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: build
+      run: dotnet build -c ${{ env.configuration }}
+          
+    - name: generate
+      run: |
+        cd ${{ env.project }}
+        dotnet pack -c ${{ env.configuration }} -o out
+
+    - name: push
+      run: dotnet nuget push ./${{ env.project }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
