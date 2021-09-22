@@ -3,6 +3,9 @@ using System.Net;
 
 namespace kamafi.core.data
 {
+    /// <summary>
+    /// Serves as a friendly exception that will be returned to the end user
+    /// </summary>
     public class KamafiFriendlyException : KamafiException
     {
         public KamafiFriendlyException()

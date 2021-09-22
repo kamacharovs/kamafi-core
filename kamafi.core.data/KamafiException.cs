@@ -4,9 +4,19 @@ using System.Text.Json;
 
 namespace kamafi.core.data
 {
+    /// <summary>
+    /// Serves as the base class for all exceptions
+    /// </summary>
     public abstract class KamafiException : ApplicationException
     {
+        /// <summary>
+        /// The HTTP status code of the exception
+        /// </summary>
         public int StatusCode { get; set; }
+
+        /// <summary>
+        /// The content type of the exception
+        /// </summary>
         public string ContentType { get; set; }
 
         protected KamafiException()
@@ -50,7 +60,7 @@ namespace kamafi.core.data
         protected KamafiException(int statusCode, JsonElement errorObject)
             : this(statusCode, errorObject.ToString())
         {
-            ContentType = @"application/problem+json";
+            ContentType = Constants.ApplicationProblemJson;
         }
     }
 }

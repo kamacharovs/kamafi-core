@@ -3,6 +3,9 @@ using System.Net;
 
 namespace kamafi.core.data
 {
+    /// <summary>
+    /// Serves as a not found exception
+    /// </summary>
     public class KamafiNotFoundException : KamafiFriendlyException
     {
         private const string DefaultMessage = "The requested item was not found.";
