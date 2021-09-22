@@ -1,6 +1,6 @@
 # Overview
 
-Kamacharov Finance core library
+Kamacharov Finance core packages
 
 [![publish](https://github.com/kamacharovs/kamafi-core/actions/workflows/publish.yml/badge.svg)](https://github.com/kamacharovs/kamafi-core/actions/workflows/publish.yml)
 
