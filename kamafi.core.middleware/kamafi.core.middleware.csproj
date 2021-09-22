@@ -9,11 +9,11 @@
     <Company>Kamacharov Finance</Company>
     <Product>Kamacharov Finance core middleware package</Product>
     <Description>Kamacharov Finance core middleware package</Description>
-    <RepositoryUrl>https://github.com/kamacharovs/kamafi-core</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageProjectUrl>https://github.com/kamacharovs/kamafi-core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kamacharovs/kamafi-core</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
