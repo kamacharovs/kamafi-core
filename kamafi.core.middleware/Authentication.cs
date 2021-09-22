@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 using kamafi.core.data;
@@ -10,7 +11,6 @@ namespace kamafi.core.middleware
 {
     public static partial class MiddlewareExtensions
     {
-        //TODO add overloaded method to accept IConfiguration
         public static IServiceCollection AddKamafiAuthentication(
             this IServiceCollection services,
             string publicKey,
@@ -38,6 +38,16 @@ namespace kamafi.core.middleware
                 });
 
             return services;
+        }
+
+        public static IServiceCollection AddKamafiAuthentication(
+            this IServiceCollection services,
+            IConfiguration config)
+        {
+            return services.AddKamafiAuthentication(
+                config[Keys.JwtPublicKey],
+                config[Keys.JwtIssuer],
+                config[Keys.JwtAudience]);
         }
     }
 }
