@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace kamafi.core.data
 {
+    /// <summary>
+    /// Constant values
+    /// </summary>
     public static class Constants
     {
         public const string Accept = nameof(Accept);
@@ -32,6 +35,9 @@ namespace kamafi.core.data
             };
     }
 
+    /// <summary>
+    /// Constant keys
+    /// </summary>
     public static class Keys
     {
         public const string Jwt = nameof(Jwt);
