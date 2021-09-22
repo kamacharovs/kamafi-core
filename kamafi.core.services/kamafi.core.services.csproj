@@ -4,14 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>Kamacharov Finance</Company>
-    <Description>Kamacharov Finance core library</Description>
+    <Description>Kamacharov Finance core services library</Description>
     <PackageProjectUrl>https://github.com/kamacharovs</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kamacharovs/kamafi-core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>gkama</Authors>
     <Product>Kamacharov Finance</Product>
-    <PackageId>kamafi.core</PackageId>
+    <PackageId>kamafi.core.services</PackageId>
     <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -25,15 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <PackageReference Include="Polly" Version="7.2.2" />
+    <PackageReference Include="RestSharp" Version="106.12.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\kamafi.core.data\kamafi.core.data.csproj" />
-    <ProjectReference Include="..\kamafi.core.middleware\kamafi.core.middleware.csproj" />
   </ItemGroup>
 
 </Project>
