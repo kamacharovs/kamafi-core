@@ -4,6 +4,14 @@ Kamacharov Finance core library
 
 [![publish](https://github.com/kamacharovs/kamafi-core/actions/workflows/publish.yml/badge.svg)](https://github.com/kamacharovs/kamafi-core/actions/workflows/publish.yml)
 
+## Packages
+
+List of available packages
+
+- `kamafi.core.data`
+- `kamafi.core.middleware`
+- `kamafi.core.services`
+
 ## How it works
 
 In order for your project to pull packages from this repository, then you need to add the source to your IDE, GitHub action, etc. before you have to build you project.
