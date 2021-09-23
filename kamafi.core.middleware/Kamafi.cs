@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +15,19 @@ namespace kamafi.core.middleware
 {
     public partial class MiddlewareExtensions
     {
-        public static IServiceCollection AddKamafiDefaultServices<TDbContext>(
+        public static IServiceCollection AddKamafiServices<TDbContext>(
+            this IServiceCollection services,
+            IKamafiConfiguration config)
+            where TDbContext : DbContext
+        {
+            return services.AddKamafiServices<TDbContext>(
+                config.Config,
+                config.OpenApiName,
+                config.OpenApiVersion,
+                config.DefaultApiVersion);
+        }
+
+        public static IServiceCollection AddKamafiServices<TDbContext>(
             this IServiceCollection services,
             IConfiguration config,
             string openApiName,
@@ -54,7 +61,7 @@ namespace kamafi.core.middleware
             return services;
         }
 
-        public static IApplicationBuilder UseKamafiDefaultServices(
+        public static IApplicationBuilder UseKamafiServices(
             this IApplicationBuilder builder,
             IConfiguration config,
             IWebHostEnvironment env)
