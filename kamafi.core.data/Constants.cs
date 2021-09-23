@@ -81,4 +81,12 @@ namespace kamafi.core.data
             public const string PublicKey = "public_key";
         }
     }
+
+    /// <summary>
+    /// Feature flags
+    /// </summary>
+    public enum FeatureFlags
+    {
+        Eventing
+    }
 }

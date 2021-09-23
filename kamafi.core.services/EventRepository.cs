@@ -17,20 +17,27 @@ namespace kamafi.core.services
         private readonly ILogger<EventRepository> _logger;
         private readonly ITenant _tenant;
         private readonly IRestClient _client;
+        private readonly IEnvConfiguration _envConfig;
 
         public EventRepository(
             ILogger<EventRepository> logger,
             ITenant tenant,
-            IRestClient client)
+            IRestClient client,
+            IEnvConfiguration envConfig)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _tenant = tenant ?? throw new ArgumentNullException(nameof(tenant));
             _client = client ?? throw new ArgumentNullException(nameof(client));
+
+            _envConfig = envConfig;
         }
 
         public async Task EmitAsync<T>(Event ev)
             where T : Event, new()
         {
+            if (await _envConfig?.IsEnabledAsync(FeatureFlags.Eventing) is false)
+                return;
+
             try
             {
                 await Policy.Handle<HttpRequestException>()
