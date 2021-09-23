@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.3.3" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.18.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
@@ -37,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\kamafi.core.data\kamafi.core.data.csproj" />
+    <ProjectReference Include="..\kamafi.core.services\kamafi.core.services.csproj" />
   </ItemGroup>
 
 </Project>

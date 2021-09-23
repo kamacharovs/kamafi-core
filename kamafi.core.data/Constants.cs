@@ -40,6 +40,10 @@ namespace kamafi.core.data
     /// </summary>
     public static class Keys
     {
+        public const string Data = nameof(Data);
+        public const string PostgreSQL = nameof(PostgreSQL);
+        public const string DataPostgreSQL = Data + ":" + PostgreSQL;
+
         public const string Eventing = nameof(Eventing);
         public const string BaseUrl = nameof(BaseUrl);
         public const string FunctionKeyHeaderName = nameof(FunctionKeyHeaderName);
@@ -47,6 +51,10 @@ namespace kamafi.core.data
         public const string EventingBaseUrl = nameof(Eventing) + ":" + nameof(BaseUrl);
         public const string EventingFunctionKeyHeaderName = nameof(Eventing) + ":" + nameof(FunctionKeyHeaderName);
         public const string EventingFunctionKey = nameof(Eventing) + ":" + nameof(FunctionKey);
+
+        public const string Cors = nameof(Cors);
+        public const string Portal = nameof(Portal);
+        public const string CorsPortal = Cors + ":" + Portal;
 
         public const string Jwt = nameof(Jwt);
         public const string Bearer = nameof(Bearer);

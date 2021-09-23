@@ -12,7 +12,7 @@ namespace kamafi.core.data
     /// It investigates the <see cref="System.Security.Claims.ClaimsPrincipal"/> and reads the claims into this object.
     /// The claims are stored as a JWT and passed down the ecosystem
     /// </summary>
-    public class Tenant
+    public class Tenant : ITenant
     {
         [JsonPropertyName("user_id")]
         public int? UserId { get; set; }
