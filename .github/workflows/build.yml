@@ -22,13 +22,22 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.dotnet_version }}
-      
+    
+    - name: restore data
+      run: dotnet restore ${{ env.project_data }}
+
     - name: build data
       run: dotnet build -c ${{ env.configuration }} ${{env.project_data }} --no-restore
+
+    - name: restore data
+      run: dotnet restore ${{ env.project_services }}
 
     - name: build services
       run: dotnet build -c ${{ env.configuration }} ${{env.project_services }} --no-restore
       
+    - name: restore data
+      run: dotnet restore ${{ env.project_middleware }}
+
     - name: build middleware
       run: dotnet build -c ${{ env.configuration }} ${{env.project_middleware }} --no-restore
       
