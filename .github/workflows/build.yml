@@ -29,13 +29,13 @@ jobs:
     - name: build data
       run: dotnet build -c ${{ env.configuration }} ${{env.project_data }} --no-restore
 
-    - name: restore data
+    - name: restore services
       run: dotnet restore ${{ env.project_services }}
 
     - name: build services
       run: dotnet build -c ${{ env.configuration }} ${{env.project_services }} --no-restore
       
-    - name: restore data
+    - name: restore middleware
       run: dotnet restore ${{ env.project_middleware }}
 
     - name: build middleware
