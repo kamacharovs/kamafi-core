@@ -9,6 +9,18 @@ namespace kamafi.core.middleware
 {
     public static partial class MiddlewareExtensions
     {
+        /// <summary>
+        /// Configuration values that are used.
+        /// Uses
+        /// <see cref="Keys.EventingBaseUrl"/>.
+        /// Uses (optional)
+        /// <see cref="Keys.EventingFunctionKeyHeaderName"/>
+        /// <see cref="Keys.EventingFunctionKey"/>.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="config"></param>
+        /// <param name="useFunctionDefaultHeader">Flag whether to use the Azure Function default header (header name and key). Defaults to true</param>
+        /// <returns></returns>
         public static IServiceCollection AddEventingRestClient(
             this IServiceCollection services,
             IConfiguration config,
