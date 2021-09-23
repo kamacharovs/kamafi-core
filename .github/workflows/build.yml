@@ -22,9 +22,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.dotnet_version }}
-
-    - name: restore middleware
-      run: dotnet restore ${{ env.project_middleware }}
       
     - name: build data
       run: dotnet build -c ${{ env.configuration }} ${{env.project_data }} --no-restore
