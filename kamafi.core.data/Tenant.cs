@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace kamafi.core.data
 {
+    /// <summary>
+    /// Serves to capture details on an authenticated user. 
+    /// It investigates the <see cref="System.Security.Claims.ClaimsPrincipal"/> and reads the claims into this object.
+    /// The claims are stored as a JWT and passed down the ecosystem
+    /// </summary>
     public class Tenant
     {
         [JsonPropertyName("user_id")]
