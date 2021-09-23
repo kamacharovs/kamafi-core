@@ -1,0 +1,92 @@
+name: publish
+
+env:
+  configuration: Release
+  dotnet_version: 5.0.x
+  source_url: https://nuget.pkg.github.com/kamacharovs/index.json
+  project_data: kamafi.core.data
+  project_middleware: kamafi.core.middleware
+  project_services: kamafi.core.services
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  publish-data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.dotnet_version }}
+        source-url: ${{ env.source_url }}
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+    - name: build
+      run: dotnet build -c ${{ env.configuration }}
+          
+    - name: generate
+      run: |
+        cd ${{ env.project_data }}
+        dotnet pack -c ${{ env.configuration }} -o out
+
+    - name: push
+      run: |
+        dotnet nuget push ./${{ env.project_data }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+
+  publish-middleware:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.dotnet_version }}
+        source-url: ${{ env.source_url }}
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+    - name: build
+      run: dotnet build -c ${{ env.configuration }}
+          
+    - name: generate
+      run: |
+        cd ${{ env.project_middleware }}
+        dotnet pack -c ${{ env.configuration }} -o out
+
+    - name: push
+      run: |
+        dotnet nuget push ./${{ env.project_middleware }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}
+
+  publish-services:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.dotnet_version }}
+        source-url: ${{ env.source_url }}
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+    - name: build
+      run: dotnet build -c ${{ env.configuration }}
+          
+    - name: generate
+      run: |
+        cd ${{ env.project_services }}
+        dotnet pack -c ${{ env.configuration }} -o out
+
+    - name: push
+      run: |
+        dotnet nuget push ./${{ env.project_services }}/out/*.nupkg --skip-duplicate -n true -k ${{ secrets.PACKAGE_TOKEN }}

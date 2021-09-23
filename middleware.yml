@@ -1,0 +1,12 @@
+name: publish middleware package
+
+env:
+  configuration: Release
+  project: kamafi.core.middleware
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  
