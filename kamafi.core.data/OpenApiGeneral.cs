@@ -25,5 +25,10 @@
         /// Description of the OpenAPI definition
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Path to the XML comments
+        /// </summary>
+        public string XmlCommentsPath { get; set; }
     }
 }

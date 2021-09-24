@@ -29,7 +29,7 @@ namespace kamafi.core.middleware
                     License = license
                 });
 
-                //x.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+                x.IncludeXmlComments(general.XmlCommentsPath);
             });
 
             return services;
@@ -39,7 +39,8 @@ namespace kamafi.core.middleware
             this IServiceCollection services,
             IConfiguration config,
             string name,
-            string version)
+            string version,
+            string xmlCommentsPath)
         {
             return services.AddKamafiSwaggerGen(
                 new OpenApiGeneral
@@ -47,7 +48,8 @@ namespace kamafi.core.middleware
                     Name = name,
                     Title = config[Keys.OpenApiTitle],
                     Version = version,
-                    Description = config[Keys.OpenApiDescription]
+                    Description = config[Keys.OpenApiDescription],
+                    XmlCommentsPath = xmlCommentsPath
                 },
                 new OpenApiContact
                 {

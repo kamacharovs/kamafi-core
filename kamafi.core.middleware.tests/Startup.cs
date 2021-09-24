@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using kamafi.core.data;
+using kamafi.core.middleware;
 
 namespace kamafi.core.middleware.tests
 {
@@ -24,13 +25,11 @@ namespace kamafi.core.middleware.tests
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddKamafiServices<DataContext>(new KamafiConfiguration()
-            {
-                Config = _config,
-                OpenApiName = Constants.ApiName,
-                OpenApiVersion = Constants.ApiV1Full,
-                DefaultApiVersion = Constants.ApiV1
-            });
+            services.AddKamafiServices<DataContext>(
+                _config,
+                Constants.ApiName,
+                Constants.ApiV1Full,
+                Constants.ApiV1);
         }
 
         public void Configure(IApplicationBuilder app)

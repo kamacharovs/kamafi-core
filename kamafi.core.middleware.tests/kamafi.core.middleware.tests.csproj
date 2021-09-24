@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\kamafi.core.middleware\kamafi.core.middleware.csproj" />
+    <PackageReference Include="kamafi.core.data" Version="1.0.0" />
+    <PackageReference Include="kamafi.core.middleware" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
   </ItemGroup>
 
 </Project>
