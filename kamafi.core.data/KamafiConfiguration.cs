@@ -13,10 +13,6 @@ namespace kamafi.core.data
         public string OpenApiName { get; set; }
         public string OpenApiVersion { get; set; }
         public string DefaultApiVersion { get; set; }
-
-        public KamafiConfiguration()
-        {
-
-        }
+        public string XmlCommentsPath { get; set; }
     }
 }

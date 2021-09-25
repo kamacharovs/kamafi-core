@@ -24,7 +24,8 @@ namespace kamafi.core.middleware
                 config.Config,
                 config.OpenApiName,
                 config.OpenApiVersion,
-                config.DefaultApiVersion);
+                config.DefaultApiVersion,
+                config.XmlCommentsPath);
         }
 
         public static IServiceCollection AddKamafiServices<TDbContext>(
@@ -32,7 +33,8 @@ namespace kamafi.core.middleware
             IConfiguration config,
             string openApiName,
             string openApiVersion,
-            string defaultApiVersion)
+            string defaultApiVersion,
+            string xmlCommentsPath = null)
             where TDbContext : DbContext
         {
             services.AddScoped<IEnvConfiguration, EnvConfiguration>()
@@ -47,7 +49,7 @@ namespace kamafi.core.middleware
                 .AddHttpContextAccessor()
                 .AddApplicationInsightsTelemetry()
                 .AddKamafiAuthentication(config)
-                .AddKamafiSwaggerGen(config, openApiName, openApiVersion)
+                .AddKamafiSwaggerGen(config, openApiName, openApiVersion, xmlCommentsPath)
                 .AddKamafiApiVersioning(defaultApiVersion)
                 .AddEventingRestClient(config);
 
