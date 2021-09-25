@@ -29,7 +29,8 @@ namespace kamafi.core.middleware
                     License = license
                 });
 
-                x.IncludeXmlComments(general.XmlCommentsPath);
+                if (!string.IsNullOrWhiteSpace(general.XmlCommentsPath))
+                    x.IncludeXmlComments(general.XmlCommentsPath);
             });
 
             return services;
@@ -40,7 +41,7 @@ namespace kamafi.core.middleware
             IConfiguration config,
             string name,
             string version,
-            string xmlCommentsPath)
+            string xmlCommentsPath = null)
         {
             return services.AddKamafiSwaggerGen(
                 new OpenApiGeneral

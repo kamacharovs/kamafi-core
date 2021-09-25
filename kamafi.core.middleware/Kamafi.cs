@@ -34,7 +34,7 @@ namespace kamafi.core.middleware
             string openApiName,
             string openApiVersion,
             string defaultApiVersion,
-            string xmlCommentsPath)
+            string xmlCommentsPath = null)
             where TDbContext : DbContext
         {
             services.AddScoped<IEnvConfiguration, EnvConfiguration>()
