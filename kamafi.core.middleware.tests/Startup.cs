@@ -1,12 +1,11 @@
 using System;
+using System.IO;
+using System.Reflection;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
-using kamafi.core.data;
-using kamafi.core.middleware;
 
 namespace kamafi.core.middleware.tests
 {
@@ -25,11 +24,14 @@ namespace kamafi.core.middleware.tests
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddKamafiServices<DataContext>(
-                _config,
-                Constants.ApiName,
-                Constants.ApiV1Full,
-                Constants.ApiV1);
+            services.AddKamafiServices<DataContext>(new data.KamafiConfiguration()
+            {
+                Config = _config,
+                OpenApiName = Constants.ApiName,
+                OpenApiVersion = Constants.ApiV1Full,
+                DefaultApiVersion = Constants.ApiV1,
+                XmlCommentsPath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml")
+            });
         }
 
         public void Configure(IApplicationBuilder app)
