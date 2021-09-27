@@ -27,6 +27,9 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
+    - name: clean
+      run: dotnet clean -c ${{ env.configuration }} && dotnet nuget locals all --clear
+
     - name: build
       run: dotnet build -c ${{ env.configuration }}
           
