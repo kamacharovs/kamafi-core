@@ -28,7 +28,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
     - name: build
-      run: dotnet build -c ${{ env.configuration }}
+      run: dotnet build ${{ env.project_data }} -c ${{ env.configuration }}
           
     - name: generate
       run: |
@@ -54,7 +54,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
     - name: build
-      run: dotnet build -c ${{ env.configuration }}
+      run: dotnet build ${{ env.project_middleware }} -c ${{ env.configuration }}
           
     - name: generate
       run: |
@@ -80,7 +80,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
     - name: build
-      run: dotnet build -c ${{ env.configuration }}
+      run: dotnet build ${{ env.project_services }} -c ${{ env.configuration }}
           
     - name: generate
       run: |
