@@ -4,7 +4,6 @@ env:
   configuration: Release
   dotnet_version: 5.0.x
   source_url: https://nuget.pkg.github.com/kamacharovs/index.json
-  nuget_source_url: https://api.nuget.org/v3/index.json
   project_data: kamafi.core.data
   project_middleware: kamafi.core.middleware
   project_services: kamafi.core.services
@@ -28,14 +27,8 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
-    - name: remove nuget
-      run: dotnet nuget remove source nuget.org
-
-    - name: add nuget
-      run: dotnet nuget add source ${{ env.nuget_source_url }} -n nuget.org
-
     - name: build
-      run: dotnet build -c ${{ env.configuration }}
+      run: dotnet build ${{ env.project_data }} -c ${{ env.configuration }}
           
     - name: generate
       run: |
@@ -61,7 +54,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
     - name: build
-      run: dotnet build -c ${{ env.configuration }}
+      run: dotnet build ${{ env.project_middleware }} -c ${{ env.configuration }}
           
     - name: generate
       run: |
@@ -87,7 +80,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
     - name: build
-      run: dotnet build -c ${{ env.configuration }}
+      run: dotnet build ${{ env.project_services }} -c ${{ env.configuration }}
           
     - name: generate
       run: |
