@@ -9,7 +9,7 @@ env:
   project_services: kamafi.core.services
 
 on:
-  push:
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -26,6 +26,9 @@ jobs:
         source-url: ${{ env.source_url }}
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+
+    - name: clean
+      run: dotnet clean ${{ env.project_data }} -c ${{ env.configuration }} && dotnet nuget locals all --clear
 
     - name: build
       run: dotnet build -c ${{ env.configuration }}
