@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>kamafi.core.services</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>gkama</Authors>
     <Company>Kamacharov Finance</Company>
     <Product>Kamacharov Finance core services package</Product>
