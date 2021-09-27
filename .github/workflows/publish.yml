@@ -28,8 +28,11 @@ jobs:
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
 
-    - name: add nuget.org
-      run: dotnet nuget add source ${{ env.nuget_source_url }} -n nuget
+    - name: clean
+      run: dotnet clean ${{ env.project_data }} -c ${{ env.configuration }} && dotnet nuget locals all --clear
+
+    - name: restore
+      run: dotnet restore ${{ env.project_data }}
 
     - name: build
       run: dotnet build -c ${{ env.configuration }}
